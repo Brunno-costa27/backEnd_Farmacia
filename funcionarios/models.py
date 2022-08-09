@@ -4,9 +4,9 @@ from django.db import models
 
 
 class Employees(models.Model):
-    cpf = models.CharField(primary_key=True, max_length=11)
+    id = models.CharField(primary_key=True, max_length=11)
     nome = models.CharField(max_length=50)
-    senha = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
 
 class Offers(models.Model):
     id = models.AutoField(primary_key=True)

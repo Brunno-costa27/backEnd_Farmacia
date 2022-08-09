@@ -5,7 +5,7 @@ from rest_framework import serializers
 class FuncionariosSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Employees
-        fields = ['cpf', 'nome', 'senha']
+        fields = ['id', 'nome', 'email']
 
 class OffersSerializer(serializers.ModelSerializer):
     class Meta:

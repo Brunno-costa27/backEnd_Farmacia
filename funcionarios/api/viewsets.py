@@ -5,15 +5,18 @@ from re import U
 
 import requests
 from django.shortcuts import get_object_or_404
+from drf_yasg.utils import swagger_auto_schema
 from funcionarios import models
 from funcionarios.api import serializers
 from rest_framework import status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from twilio.rest import Client
 
 from ..models import Employees
+
+# from twilio.rest import Client
+
 
 
 class FuncionariosViewSet(viewsets.ModelViewSet):
@@ -22,6 +25,7 @@ class FuncionariosViewSet(viewsets.ModelViewSet):
     queryset = models.Employees.objects.all()
   
 # Mostra todos os funcionários
+# @swagger_auto_schema()
 @api_view(http_method_names=['GET'])
 def employeesAll(request):
     # Código que manda email para os pacientes
@@ -37,7 +41,7 @@ def employeesAll(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 # Busca um funcionario
-@api_view()
+@api_view(http_method_names=['GET'])
 def employeeDetail(request, pk):
     # user = get_object_or_404(
     #     User.objects.all(), pk=pk
@@ -56,6 +60,7 @@ def employeeDetail(request, pk):
         },status=status.HTTP_400_BAD_REQUEST)
 
 # Cria um funcionario
+@swagger_auto_schema(method='POST', request_body=serializers.FuncionariosSerializer)
 @api_view(http_method_names=['POST'])
 def createEmployees(request):
     serializer = serializers.FuncionariosSerializer(data=request.data)
@@ -99,6 +104,7 @@ def buscar_dados(request):
     return Response(todos, status=status.HTTP_200_OK)
 
 # adicionar ofertas no banco da farmácia
+@swagger_auto_schema(method='POST', request_body=serializers.OffersSerializer)
 @api_view(http_method_names=['POST'])
 def add_offers(request):
     serializer = serializers.OffersSerializer(data=request.data)
@@ -108,6 +114,7 @@ def add_offers(request):
     else:
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST) 
 
+# @swagger_auto_schema(method='POST', request_body=)
 @api_view(http_method_names=['POST'])
 def patient_message(request):
     # corpo_email = """

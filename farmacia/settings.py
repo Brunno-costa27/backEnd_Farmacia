@@ -35,9 +35,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'funcionarios',
-    'rest_framework'
+    'rest_framework',
+    'drf_yasg'
 ]
 
+# SWAGGER_SETTINGS = {
+#     'VALIDATOR_URL': 'http://localhost:8000',
+# },
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -80,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'farmacia',
         'USER': 'postgres',
-        'PASSWORD': '!',
+        'PASSWORD': 'cursodeti27!',
         'HOST': 'localhost',
         'PORT': '5432'
 
