@@ -122,10 +122,14 @@ def patient_message(request):
     # <p>Mensagem da Farmácia xxxxx</p>
     # """
     data = request.data
+    nome = data['nome']
+    medicament = data['medicament']
     print(data['email'])
-    corpo_email = """
-    <p>Olá, Brunno</p>
-    <p>Mensagem da Farmácia xxxxx</p>
+    print(data['nome'])
+    print(data['medicament'])
+    corpo_email = f"""
+    <p>Olá, {nome}</p>
+    <p>Você solicitou o medicamento {medicament}</p>
     """
 
     msg = email.message.Message()
@@ -142,12 +146,10 @@ def patient_message(request):
     s.login(msg['From'], password)
     s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))
     print('Email enviado')
-    # server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    # server.login("sbrunno.costa@gmail.com", "neppkrhchairkaet")
-    # server.sendmail(
-    # "sbrunno.costa@gmail.com",
-    # email['email'],
-    # "Deu certo!")
-    # server.quit()
+
+    serializer = serializers.EmailSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+
     return Response({"sucess": "email"}, status=status.HTTP_200_OK)
     

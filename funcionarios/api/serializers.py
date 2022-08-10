@@ -13,3 +13,7 @@ class OffersSerializer(serializers.ModelSerializer):
         fields = ['id', 'medicament', 'type', 'price', 'status', 'id_request']
 
     
+class EmailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Email
+        fields = ['id', 'email', 'nome', 'id_request']

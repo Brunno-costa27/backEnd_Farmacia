@@ -17,3 +17,8 @@ class Offers(models.Model):
     id_request = models.IntegerField(default=0)
 
 
+class Email(models.Model):
+    id = models.AutoField(primary_key=True)
+    email = models.CharField(max_length=100)
+    nome = models.CharField(max_length=50)
+    id_request = models.IntegerField(default=0)
