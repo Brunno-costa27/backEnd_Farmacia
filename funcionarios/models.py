@@ -15,6 +15,7 @@ class Offers(models.Model):
     price = models.CharField(max_length=30)
     status = models.IntegerField(default=0)
     id_request = models.IntegerField(default=0)
+    quant =  models.IntegerField(default=0)
 
 
 class Email(models.Model):

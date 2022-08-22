@@ -10,7 +10,7 @@ class FuncionariosSerializer(serializers.ModelSerializer):
 class OffersSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Offers
-        fields = ['id', 'medicament', 'type', 'price', 'status', 'id_request']
+        fields = ['id', 'medicament', 'type', 'price', 'status', 'id_request', 'quant']
 
     
 class EmailSerializer(serializers.ModelSerializer):

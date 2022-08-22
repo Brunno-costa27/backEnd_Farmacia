@@ -36,11 +36,12 @@ urlpatterns = [
     path('employees', viewsets.employeesAll),
     path('create', viewsets.createEmployees),
     path('offers', viewsets.add_offers),
+    path('offers_all', viewsets.get_offers),
     path('email', viewsets.patient_message),
     path('detail/<int:pk>/', viewsets.employeeDetail),
     path('update/<int:pk>/', viewsets.updateEmployees),
     path('employee/<int:pk>/', viewsets.deleteEmployees),
-    # path('teste', viewsets.buscar_dados),
+    path('emails', viewsets.message_All),
     # path('swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
    path('docs', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc')
