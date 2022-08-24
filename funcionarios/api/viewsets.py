@@ -146,9 +146,9 @@ def patient_message(request):
     if(contador == 0):
             corpo_email = f"""
             <p>Olá, {nome}</p>
-            <p>Você solicitou o medicamento {medicament}</p>
+            <p>você solicitou o medicamento {medicament},</p>
             <p>para mais informações entrar em contato com nosso atendente pelo número (xx) xxxx-xxxx.</p>
-            <p>obrigado pela preferência.</p>
+            <p>O sucesso é alcançado por aqueles que não deixam de tentar.</p>
             """
 
             msg = email.message.Message()
